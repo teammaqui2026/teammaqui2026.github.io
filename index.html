@@ -1036,24 +1036,75 @@
       flex-wrap: wrap;
     }
 
+    /* --- ENTOURAGE COLOR PALETTE STYLING --- */
+    .palette-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 16px 12px;
+      margin: 24px 0 22px;
+      justify-items: center;
+    }
+
     .palette-item {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 6px;
+      text-align: center;
+      width: 100%;
+      max-width: 140px;
+    }
+
+    .palette-role-badge {
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--navy);
+      background: rgba(221, 165, 165, 0.25);
+      padding: 3px 8px;
+      border-radius: 50px;
+      margin-bottom: 8px;
+      line-height: 1.2;
+      min-height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .swatch {
-      width: 42px;
-      height: 42px;
+      width: 46px;
+      height: 46px;
       border-radius: 50%;
-      border: 3px solid var(--white);
-      box-shadow: 0 4px 12px rgba(26, 43, 73, 0.12);
-      transition: transform 0.25s ease;
+      border: 3px solid #FFFFFF;
+      box-shadow: 0 4px 14px rgba(26, 43, 73, 0.12);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      cursor: pointer;
     }
 
     .swatch:hover {
       transform: scale(1.12);
+      box-shadow: 0 6px 18px rgba(221, 165, 165, 0.4);
+    }
+
+    .swatch-name {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-top: 6px;
+      letter-spacing: 0.04em;
+    }
+
+    .swatch-hex {
+      font-size: 0.62rem;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      font-family: monospace;
+    }
+
+    /* Reserved Tag for Bride */
+    .palette-item.is-bride .palette-role-badge {
+      background: #F4DADA;
+      color: #9E5B5B;
     }
 
     .swatch-label {
@@ -2505,27 +2556,55 @@
       <p class="attire-sub">
         Gentlemen are encouraged to wear Barong Tagalog or dark suits. Ladies in elegant long gowns or formal cocktail dresses.
       </p>
-    
-      <div class="palette-row">
+
+      <!-- Palette Grouped by Roles -->
+      <div class="palette-grid">
+        <!-- Mothers & Groom -->
         <div class="palette-item">
-          <div class="swatch" style="background-color: #1A2B49;"></div>
-          <span class="swatch-label">Navy Blue</span>
+          <span class="palette-role-badge">Mothers & Groom</span>
+          <div class="swatch" style="background-color: #2F4156;" title="Navy (#2F4156)"></div>
+          <span class="swatch-name">Navy</span>
+          <span class="swatch-hex">#2F4156</span>
         </div>
+
+        <!-- Maid of Honor & Best Man -->
         <div class="palette-item">
-          <div class="swatch" style="background-color: #DDA5A5;"></div>
-          <span class="swatch-label">Dusty Rose</span>
+          <span class="palette-role-badge">MOH & Best Man</span>
+          <div class="swatch" style="background-color: #CBD9E6;" title="Dusty Blue (#CBD9E6)"></div>
+          <span class="swatch-name">Dusty Blue</span>
+          <span class="swatch-hex">#CBD9E6</span>
         </div>
+
+        <!-- Bridesmaids -->
         <div class="palette-item">
-          <div class="swatch" style="background-color: #F4DADA;"></div>
-          <span class="swatch-label">Blush</span>
+          <span class="palette-role-badge">Bridesmaids</span>
+          <div class="swatch" style="background-color: #E5B2BD;" title="Silk Dusty Rose (#E5B2BD)"></div>
+          <span class="swatch-name">Dusty Rose</span>
+          <span class="swatch-hex">#E5B2BD</span>
         </div>
-        <div class="palette-item">
-          <div class="swatch" style="background-color: #E8DFD1;"></div>
-          <span class="swatch-label">Champagne</span>
+
+        <!-- Bride -->
+        <div class="palette-item is-bride">
+          <span class="palette-role-badge">Bride</span>
+          <div class="swatch" style="background-color: #F7F3EE; border: 2px solid #E8DFD1;" title="Ivory (#F7F3EE)"></div>
+          <span class="swatch-name">Ivory</span>
+          <span class="swatch-hex">#F7F3EE</span>
         </div>
+
+        <!-- Groomsmen -->
         <div class="palette-item">
-          <div class="swatch" style="background-color: #F7F4EE; border-color: #E8DFD1;"></div>
-          <span class="swatch-label">Soft Beige</span>
+          <span class="palette-role-badge">Groomsmen</span>
+          <div class="swatch" style="background-color: #F5EFEB; border: 2px solid #E8DFD1;" title="Beige (#F5EFEB)"></div>
+          <span class="swatch-name">Beige</span>
+          <span class="swatch-hex">#F5EFEB</span>
+        </div>
+
+        <!-- Fathers -->
+        <div class="palette-item">
+          <span class="palette-role-badge">Fathers</span>
+          <div class="swatch" style="background-color: #4A4A4A;" title="Charcoal Gray (#4A4A4A)"></div>
+          <span class="swatch-name">Charcoal Gray</span>
+          <span class="swatch-hex">#4A4A4A</span>
         </div>
       </div>
     
@@ -3660,17 +3739,19 @@
       <h3 class="foil-text" style="font-family: 'Cormorant Garamond', serif; font-size: 2rem; margin-bottom: 6px;">
         Attire Inspiration
       </h3>
-      <p style="font-size: 0.82rem; color: var(--text-muted);">
+      <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 12px;">
         Dress code is <strong>Formal / Modern Romantic</strong> in our wedding color palette.
       </p>
-  
+
       <div class="lookbook-grid">
         <!-- Gentlemen Box -->
         <div class="lookbook-box">
           <h4>👔 Gentlemen</h4>
           <p>
-            • <strong>Barong Tagalog:</strong> Classic Piña or Jusi with black/dark trousers and formal leather shoes.<br>
-            • <strong>Dark Suits:</strong> Navy Blue, Charcoal, or Classic Black with a necktie or bowtie.
+            • <strong>Barong Tagalog:</strong> Classic Piña or Jusi with black or dark trousers.<br>
+            • <strong>Suits:</strong> Navy Blue, Charcoal Gray, or Classic Dark Suits with tie.<br>
+            • <em>Fathers:</em> Charcoal Gray suits.<br>
+            • <em>Groomsmen:</em> Beige / Champagne suits.
           </p>
         </div>
   
@@ -3678,14 +3759,16 @@
         <div class="lookbook-box">
           <h4>👗 Ladies</h4>
           <p>
-            • <strong>Long Gowns:</strong> Floor-length dresses or formal midi gowns in Dusty Rose, Blush, Champagne, or Soft Beige.<br>
-            • <em>Please kindly avoid casual sundresses, slippers, and denim.</em>
+            • <strong>Long Gowns:</strong> Floor-length dresses or formal midi gowns in Navy, Dusty Blue, Silk Dusty Rose, or Soft Beige.<br>
+            • <em>Mothers:</em> Navy Blue.<br>
+            • <em>Bridesmaids:</em> Silk Dusty Rose.<br>
+            • <em>Maid of Honor:</em> Dusty Blue.
           </p>
         </div>
       </div>
   
-      <div class="attire-notice" style="display: block; margin-top: 10px;">
-        🤍 <em>Kindly note that all shades of pure white, ivory, and cream are reserved exclusively for our bride.</em>
+      <div class="attire-notice" style="display: block; margin-top: 14px;">
+        🤍 <em>Kindly note that Ivory, Cream, and White are reserved exclusively for our bride.</em>
       </div>
     </div>
   </div>
