@@ -640,6 +640,42 @@
       margin: 0 auto;
     }
 
+    /* Embedded Timeline Polaroid Photos */
+    .timeline-photo {
+      margin: 16px auto 4px;
+      max-width: 260px;
+      width: 100%;
+      background: var(--white);
+      border: 1px solid var(--beige-border);
+      border-radius: 14px;
+      padding: 8px 8px 14px;
+      box-shadow: 0 6px 20px rgba(26, 43, 73, 0.08);
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .timeline-photo:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 10px 25px rgba(221, 165, 165, 0.35);
+    }
+
+    .timeline-photo img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+      display: block;
+    }
+
+    .timeline-photo-caption {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 0.88rem;
+      color: var(--navy);
+      margin-top: 8px;
+      letter-spacing: 0.04em;
+    }
+
     /* --- LUXURY CINEMATIC VIDEO FRAME --- */
     .cinema-frame-wrapper {
       position: relative;
@@ -2301,24 +2337,33 @@
 
       <div class="timeline-wrapper" id="timelineWrapper">
         <div class="timeline-item">
-          <div class="timeline-year-pill">2018</div>
-          <h3 class="timeline-title">The First Hello</h3>
-          <p class="timeline-desc">What began as a simple conversation quickly turned into shared laughter, late-night talks, and the quiet realization that we had found something rare.</p>
+          <div class="timeline-year-pill">2016</div>
+          <h3 class="timeline-title">College Sweethearts</h3>
+          <p class="timeline-desc">We were just two college students who fell in love and started figuring life out together. Little did we know, we were beginning a story that would bring us here ten years later!</p>
+          <div class="timeline-photo">
+            <img src="https://i.imgur.com/DeCF3mR.jpeg" alt="Where Love Began">
+            <p class="timeline-photo-caption">Where Love Began</p>
+          </div>
         </div>
+
         <div class="timeline-item">
-          <div class="timeline-year-pill">2021</div>
-          <h3 class="timeline-title">Adventures & Growing Together</h3>
-          <p class="timeline-desc">Through career milestones, spontaneous weekend trips, and navigating life side by side, we learned that home isn't a place—it's each other.</p>
+          <div class="timeline-year-pill">2023</div>
+          <h3 class="timeline-title">Grace That Restored Us</h3>
+          <p class="timeline-desc">We went through a season when we almost gave up on us. But even in that difficult time, God drew us closer to Him, worked in our hearts, and restored our relationship.</p>
+          <div class="timeline-photo">
+            <img src="https://i.imgur.com/DeCF3mR.jpeg" alt="Hand in Hand">
+            <p class="timeline-photo-caption">Hand in Hand</p>
+          </div>
         </div>
+
         <div class="timeline-item">
-          <div class="timeline-year-pill">2024</div>
-          <h3 class="timeline-title">She Said Yes</h3>
+          <div class="timeline-year-pill">2025</div>
+          <h3 class="timeline-title">She Said Yes!</h3>
           <p class="timeline-desc">With full hearts and a promise for the future, Lawrence asked the easiest question Sharmaine ever had to answer.</p>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-year-pill">2026</div>
-          <h3 class="timeline-title">Our Forever Begins</h3>
-          <p class="timeline-desc">Surrounded by God's grace and our dearest family and friends, we begin the greatest chapter of our lives together.</p>
+          <div class="timeline-photo">
+            <img src="https://i.imgur.com/DeCF3mR.jpeg" alt="Forever Ahead">
+            <p class="timeline-photo-caption">Forever Ahead</p>
+          </div>
         </div>
       </div>
     </section>
@@ -2351,33 +2396,6 @@
     
           <!-- YouTube Player Target -->
           <div id="youtubePlayer"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 3. MINI ENGAGEMENT PHOTO LOOKBOOK -->
-    <section class="card reveal-card">
-      <span class="section-eyebrow">Captured Moments</span>
-      <h2 class="foil-text">Our Journey</h2>
-      
-      <div class="flourish-divider">
-        <span class="flourish-line"></span>
-        <span class="flourish-ornament">❦</span>
-        <span class="flourish-line"></span>
-      </div>
-
-      <div class="gallery-grid" id="galleryGrid">
-        <div class="gallery-polaroid">
-          <img src="https://i.imgur.com/DeCF3mR.jpeg" alt="Engagement photo">
-          <p class="polaroid-caption">Where Love Began</p>
-        </div>
-        <div class="gallery-polaroid">
-          <img src="https://i.imgur.com/DeCF3mR.jpeg" alt="Engagement photo">
-          <p class="polaroid-caption">Hand in Hand</p>
-        </div>
-        <div class="gallery-polaroid">
-          <img src="https://i.imgur.com/DeCF3mR.jpeg" alt="Engagement photo">
-          <p class="polaroid-caption">Forever Ahead</p>
         </div>
       </div>
     </section>
@@ -3067,13 +3085,25 @@
           if (data.story && data.story.length > 0) {
             const timelineContainer = document.getElementById('timelineWrapper');
             if (timelineContainer) {
-              timelineContainer.innerHTML = data.story.map(item => `
-                <div class="timeline-item">
-                  <div class="timeline-year-pill">${item.year}</div>
-                  <h3 class="timeline-title">${item.title}</h3>
-                  <p class="timeline-desc">${item.story}</p>
-                </div>
-              `).join('');
+              timelineContainer.innerHTML = data.story.map((item, index) => {
+                // Uses image from Story column D; falls back to Gallery sheet if available
+                const photoUrl = item.image || (data.gallery && data.gallery[index] ? data.gallery[index].url : '');
+                const photoCaption = (data.gallery && data.gallery[index] && data.gallery[index].caption) || item.title || '';
+
+                return `
+                  <div class="timeline-item">
+                    <div class="timeline-year-pill">${item.year}</div>
+                    <h3 class="timeline-title">${item.title}</h3>
+                    <p class="timeline-desc">${item.story}</p>
+                    ${photoUrl ? `
+                      <div class="timeline-photo" data-index="${index}">
+                        <img src="${formatDriveImage(photoUrl)}" alt="${photoCaption}">
+                        ${photoCaption ? `<p class="timeline-photo-caption">${photoCaption}</p>` : ''}
+                      </div>
+                    ` : ''}
+                  </div>
+                `;
+              }).join('');
             }
           }
 
@@ -3504,9 +3534,9 @@
 
     function getLiveGalleryData() {
       const list = [];
-      document.querySelectorAll('.gallery-polaroid').forEach(polaroid => {
-        const img = polaroid.querySelector('img');
-        const cap = polaroid.querySelector('.polaroid-caption');
+      document.querySelectorAll('.timeline-photo').forEach(photoCard => {
+        const img = photoCard.querySelector('img');
+        const cap = photoCard.querySelector('.timeline-photo-caption');
         if (img && img.src) {
           list.push({
             src: img.src,
@@ -3516,6 +3546,19 @@
       });
       return list;
     }
+
+    // Global Click Listener for Timeline Photos
+    document.addEventListener('click', function(e) {
+      const photoCard = e.target.closest('.timeline-photo');
+      if (!photoCard) return;
+
+      const allPhotos = Array.from(document.querySelectorAll('.timeline-photo'));
+      const clickedIndex = allPhotos.indexOf(photoCard);
+
+      if (clickedIndex !== -1) {
+        openTouchLightbox(clickedIndex);
+      }
+    });
 
     function openTouchLightbox(index) {
       galleryImages = getLiveGalleryData();
