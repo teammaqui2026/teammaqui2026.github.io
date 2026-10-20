@@ -2957,6 +2957,7 @@
       fetch(GOOGLE_SCRIPT_API_URL + "?nocache=" + new Date().getTime())
         .then(response => response.json())
         .then(data => {
+          console.log("Sheet data received:", data);
           const cfg = data.config || {};
           
           if (cfg.Hero_Image_URL) {
@@ -2985,15 +2986,6 @@
           if (cfg.Event_Date_Display) {
             const dateEl = document.getElementById('heroDate');
             if (dateEl) dateEl.innerText = cfg.Event_Date_Display;
-          }
-
-          if (cfg.Scripture_Verse) {
-            const sText = document.getElementById('scriptureText');
-            if (sText) sText.innerText = `"${cfg.Scripture_Verse}"`;
-          }
-          if (cfg.Scripture_Ref) {
-            const sRef = document.getElementById('scriptureRef');
-            if (sRef) sRef.innerText = cfg.Scripture_Ref;
           }
 
           if (cfg.Song_Title) {
@@ -3038,11 +3030,8 @@
           const sheetVideo = cfg.YouTube_Video_ID || cfg.Video_URL;
           if (sheetVideo) {
             const parsedId = parseYouTubeId(sheetVideo);
-            if (parsedId) {
-              currentYouTubeId = parsedId;
-              if (ytPlayer && ytPlayer.cueVideoById) {
-                ytPlayer.cueVideoById(parsedId);
-              }
+            if (parsedId && ytPlayer && ytPlayer.cueVideoById) {
+              ytPlayer.cueVideoById(parsedId);
             }
           }
 
@@ -3082,40 +3071,26 @@
             if (dl) dl.innerText = cfg.RSVP_Deadline;
           }
 
+          // --- DYNAMIC STORY RENDERING (All rows including 2026) ---
           if (data.story && data.story.length > 0) {
             const timelineContainer = document.getElementById('timelineWrapper');
             if (timelineContainer) {
-              timelineContainer.innerHTML = data.story.map((item, index) => {
-                // Uses image from Story column D; falls back to Gallery sheet if available
-                const photoUrl = item.image || (data.gallery && data.gallery[index] ? data.gallery[index].url : '');
-                const photoCaption = (data.gallery && data.gallery[index] && data.gallery[index].caption) || item.title || '';
-
+              timelineContainer.innerHTML = data.story.map((item, idx) => {
+                const photo = item.image ? formatDriveImage(item.image) : '';
                 return `
                   <div class="timeline-item">
                     <div class="timeline-year-pill">${item.year}</div>
                     <h3 class="timeline-title">${item.title}</h3>
                     <p class="timeline-desc">${item.story}</p>
-                    ${photoUrl ? `
-                      <div class="timeline-photo" data-index="${index}">
-                        <img src="${formatDriveImage(photoUrl)}" alt="${photoCaption}">
-                        ${photoCaption ? `<p class="timeline-photo-caption">${photoCaption}</p>` : ''}
+                    ${photo ? `
+                      <div class="timeline-photo" data-index="${idx}">
+                        <img src="${photo}" alt="${item.title}">
+                        <p class="timeline-photo-caption">${item.title}</p>
                       </div>
                     ` : ''}
                   </div>
                 `;
               }).join('');
-            }
-          }
-
-          if (data.gallery && data.gallery.length > 0) {
-            const galleryContainer = document.getElementById('galleryGrid');
-            if (galleryContainer) {
-              galleryContainer.innerHTML = data.gallery.map(item => `
-                <div class="gallery-polaroid">
-                  <img src="${formatDriveImage(item.url)}" alt="${item.caption || 'Engagement Photo'}">
-                  <p class="polaroid-caption">${item.caption || ''}</p>
-                </div>
-              `).join('');
             }
           }
 
@@ -3131,7 +3106,7 @@
             }
           }
         })
-        .catch(err => console.log("Using local cache:", err));
+        .catch(err => console.error("Error loading sheet data:", err));
     }
     syncSheetData();
 
