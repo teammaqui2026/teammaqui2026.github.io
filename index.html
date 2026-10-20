@@ -1927,36 +1927,73 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 16px;
-      margin: 20px 0 16px;
+      margin: 20px 0 14px;
       text-align: left;
     }
-    
+
     .lookbook-box {
       background: var(--white);
       border: 1px solid var(--beige-border);
-      border-radius: 14px;
-      padding: 16px;
+      border-radius: 16px;
+      padding: 20px 18px;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
     }
-    
+
     .lookbook-box h4 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.25rem;
+      font-size: 1.35rem;
       color: var(--navy);
       margin-bottom: 6px;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
     }
-    
-    .lookbook-box p {
+
+    .lookbook-box > p {
+      font-size: 0.8rem;
+      color: var(--pink-accent);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .lookbook-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .lookbook-list li {
       font-size: 0.8rem;
       color: var(--text-muted);
-      line-height: 1.55;
+      line-height: 1.5;
+      position: relative;
+      padding-left: 14px;
     }
-    
-    @media (max-width: 520px) {
-      .lookbook-grid { grid-template-columns: 1fr; }
-      .lookbook-card { padding: 30px 18px 24px; }
+
+    .lookbook-list li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--pink-accent);
+      font-size: 0.9rem;
+    }
+
+    .lookbook-list strong {
+      color: var(--navy);
+      font-weight: 600;
+    }
+
+    @media (max-width: 540px) {
+      .lookbook-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     /* --- 6A. AMBIENT FLOATING ROSE PETALS --- */
@@ -2554,7 +2591,7 @@
       
       <p class="attire-heading">Formal / Modern Romantic</p>
       <p class="attire-sub">
-        Gentlemen are encouraged to wear Barong Tagalog or dark suits. Ladies in elegant long gowns or formal cocktail dresses.
+        Gentlemen in formal coat and tie or dark suits. Ladies in elegant floor-length evening gowns.
       </p>
 
       <!-- Palette Grouped by Roles -->
@@ -3736,39 +3773,41 @@
       <button type="button" class="lookbook-close" onclick="closeLookbook()" aria-label="Close">&times;</button>
       
       <span class="section-eyebrow">Guest Style Guide</span>
-      <h3 class="foil-text" style="font-family: 'Cormorant Garamond', serif; font-size: 2rem; margin-bottom: 6px;">
+      <h3 class="foil-text" style="font-family: 'Cormorant Garamond', serif; font-size: 2.1rem; margin-bottom: 6px;">
         Attire Inspiration
       </h3>
-      <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 12px;">
-        Dress code is <strong>Formal / Modern Romantic</strong> in our wedding color palette.
+      <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 8px;">
+        Dress code is strictly <strong>Formal / Modern Romantic</strong> in our wedding color motif.
       </p>
 
       <div class="lookbook-grid">
         <!-- Gentlemen Box -->
         <div class="lookbook-box">
           <h4>👔 Gentlemen</h4>
-          <p>
-            • <strong>Barong Tagalog:</strong> Classic Piña or Jusi with black or dark trousers.<br>
-            • <strong>Suits:</strong> Navy Blue, Charcoal Gray, or Classic Dark Suits with tie.<br>
-            • <em>Fathers:</em> Charcoal Gray suits.<br>
-            • <em>Groomsmen:</em> Beige / Champagne suits.
-          </p>
+          <p><strong>Attire:</strong> Coat &amp; Tie / Formal Suit</p>
+          <ul class="lookbook-list">
+            <li><strong>Guests:</strong> Classic Navy, Charcoal Gray, or Dark Formal Suits with dress shoes.</li>
+            <li><strong>Fathers:</strong> Charcoal Gray suit with tie.</li>
+            <li><strong>Best Man:</strong> Dusty Blue suit.</li>
+            <li><strong>Groomsmen:</strong> Warm Beige / Champagne suit.</li>
+          </ul>
         </div>
   
         <!-- Ladies Box -->
         <div class="lookbook-box">
           <h4>👗 Ladies</h4>
-          <p>
-            • <strong>Long Gowns:</strong> Floor-length dresses or formal midi gowns in Navy, Dusty Blue, Silk Dusty Rose, or Soft Beige.<br>
-            • <em>Mothers:</em> Navy Blue.<br>
-            • <em>Bridesmaids:</em> Silk Dusty Rose.<br>
-            • <em>Maid of Honor:</em> Dusty Blue.
-          </p>
+          <p><strong>Attire:</strong> Floor-Length Formal Gown</p>
+          <ul class="lookbook-list">
+            <li><strong>Guests:</strong> Elegant long gowns in Silk Dusty Rose, Dusty Blue, Navy, or Beige.</li>
+            <li><strong>Mothers:</strong> Navy Blue formal gown.</li>
+            <li><strong>Maid of Honor:</strong> Dusty Blue formal gown.</li>
+            <li><strong>Bridesmaids:</strong> Silk Dusty Rose formal gown.</li>
+          </ul>
         </div>
       </div>
   
       <div class="attire-notice" style="display: block; margin-top: 14px;">
-        🤍 <em>Kindly note that Ivory, Cream, and White are reserved exclusively for our bride.</em>
+        🤍 <em>Kindly note that all shades of White, Ivory, and Cream are strictly reserved for the Bride.</em>
       </div>
     </div>
   </div>
