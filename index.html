@@ -1036,39 +1036,44 @@
       flex-wrap: wrap;
     }
 
-    /* --- ENTOURAGE COLOR PALETTE STYLING --- */
-    .palette-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-      gap: 16px 12px;
-      margin: 24px 0 22px;
-      justify-items: center;
+    /* --- GUEST COLOR PALETTE STYLING --- */
+    .guest-palette-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      margin: 24px 0 20px;
+      flex-wrap: wrap;
     }
 
-    .palette-item {
+    .guest-swatch-item {
       display: flex;
       flex-direction: column;
       align-items: center;
-      text-align: center;
-      width: 100%;
-      max-width: 140px;
+      gap: 6px;
     }
 
-    .palette-role-badge {
-      font-size: 0.62rem;
-      letter-spacing: 0.1em;
+    .guest-swatch {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 3px solid #FFFFFF;
+      box-shadow: 0 4px 14px rgba(26, 43, 73, 0.14);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      cursor: pointer;
+    }
+
+    .guest-swatch:hover {
+      transform: scale(1.15);
+      box-shadow: 0 8px 20px rgba(93, 125, 154, 0.35);
+    }
+
+    .guest-swatch-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      font-weight: 700;
+      font-weight: 600;
       color: var(--navy);
-      background: rgba(221, 165, 165, 0.25);
-      padding: 3px 8px;
-      border-radius: 50px;
-      margin-bottom: 8px;
-      line-height: 1.2;
-      min-height: 22px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
 
     .swatch {
@@ -2581,7 +2586,7 @@
     <!-- 4. Attire & Color Palette Card -->
     <section class="card reveal-card">
       <span class="section-eyebrow">What to Wear</span>
-      <h2 class="foil-text">Attire & Palette</h2>
+      <h2 class="foil-text">Guest Attire &amp; Palette</h2>
       
       <div class="flourish-divider">
         <span class="flourish-line"></span>
@@ -2589,64 +2594,37 @@
         <span class="flourish-line"></span>
       </div>
       
-      <p class="attire-heading">Formal / Modern Romantic</p>
+      <p class="attire-heading">Formal Attire</p>
       <p class="attire-sub">
-        Gentlemen in formal coat and tie or dark suits. Ladies in elegant floor-length evening gowns.
+        We would love to see you in your formal attire that suits our color motif.
       </p>
 
-      <!-- Palette Grouped by Roles -->
-      <div class="palette-grid">
-        <!-- Mothers & Groom -->
-        <div class="palette-item">
-          <span class="palette-role-badge">Mothers & Groom</span>
-          <div class="swatch" style="background-color: #2F4156;" title="Navy (#2F4156)"></div>
-          <span class="swatch-name">Navy</span>
-          <span class="swatch-hex">#2F4156</span>
+      <!-- 5-Shade Guest Blue Palette -->
+      <div class="guest-palette-row">
+        <div class="guest-swatch-item">
+          <div class="guest-swatch" style="background-color: #16283B;" title="Deep Navy"></div>
+          <span class="guest-swatch-label">Deep Navy</span>
         </div>
-
-        <!-- Maid of Honor & Best Man -->
-        <div class="palette-item">
-          <span class="palette-role-badge">MOH & Best Man</span>
-          <div class="swatch" style="background-color: #CBD9E6;" title="Dusty Blue (#CBD9E6)"></div>
-          <span class="swatch-name">Dusty Blue</span>
-          <span class="swatch-hex">#CBD9E6</span>
+        <div class="guest-swatch-item">
+          <div class="guest-swatch" style="background-color: #5D7D9A;" title="Slate Blue"></div>
+          <span class="guest-swatch-label">Slate Blue</span>
         </div>
-
-        <!-- Bridesmaids -->
-        <div class="palette-item">
-          <span class="palette-role-badge">Bridesmaids</span>
-          <div class="swatch" style="background-color: #E5B2BD;" title="Silk Dusty Rose (#E5B2BD)"></div>
-          <span class="swatch-name">Dusty Rose</span>
-          <span class="swatch-hex">#E5B2BD</span>
+        <div class="guest-swatch-item">
+          <div class="guest-swatch" style="background-color: #6D9DAE;" title="Dusty Ocean"></div>
+          <span class="guest-swatch-label">Dusty Blue</span>
         </div>
-
-        <!-- Bride -->
-        <div class="palette-item is-bride">
-          <span class="palette-role-badge">Bride</span>
-          <div class="swatch" style="background-color: #F7F3EE; border: 2px solid #E8DFD1;" title="Ivory (#F7F3EE)"></div>
-          <span class="swatch-name">Ivory</span>
-          <span class="swatch-hex">#F7F3EE</span>
+        <div class="guest-swatch-item">
+          <div class="guest-swatch" style="background-color: #8EB4D0;" title="Soft Blue"></div>
+          <span class="guest-swatch-label">Soft Blue</span>
         </div>
-
-        <!-- Groomsmen -->
-        <div class="palette-item">
-          <span class="palette-role-badge">Groomsmen</span>
-          <div class="swatch" style="background-color: #F5EFEB; border: 2px solid #E8DFD1;" title="Beige (#F5EFEB)"></div>
-          <span class="swatch-name">Beige</span>
-          <span class="swatch-hex">#F5EFEB</span>
-        </div>
-
-        <!-- Fathers -->
-        <div class="palette-item">
-          <span class="palette-role-badge">Fathers</span>
-          <div class="swatch" style="background-color: #4A4A4A;" title="Charcoal Gray (#4A4A4A)"></div>
-          <span class="swatch-name">Charcoal Gray</span>
-          <span class="swatch-hex">#4A4A4A</span>
+        <div class="guest-swatch-item">
+          <div class="guest-swatch" style="background-color: #AFC5D2;" title="Powder Blue"></div>
+          <span class="guest-swatch-label">Powder Blue</span>
         </div>
       </div>
     
       <div class="attire-notice">
-        ✨ <em>We kindly request our guests to reserve white and cream for the bride.</em>
+        ✨ <em>We kindly request our guests to reserve white, ivory, and cream for the bride.</em>
       </div>
     
       <div>
@@ -3765,34 +3743,32 @@
       
       <span class="section-eyebrow">Guest Style Guide</span>
       <h3 class="foil-text" style="font-family: 'Cormorant Garamond', serif; font-size: 2.1rem; margin-bottom: 6px;">
-        Attire Inspiration
+        Guest Attire
       </h3>
       <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 8px;">
-        Dress code is strictly <strong>Formal / Modern Romantic</strong> in our wedding color motif.
+        We would love to see you in your formal attire that suits our color motif.
       </p>
 
       <div class="lookbook-grid">
         <!-- Gentlemen Box -->
         <div class="lookbook-box">
           <h4>👔 Gentlemen</h4>
-          <p><strong>Attire:</strong> Coat &amp; Tie / Formal Suit</p>
+          <p>Black Suit &amp; Tie</p>
           <ul class="lookbook-list">
-            <li><strong>Guests:</strong> Classic Navy, Charcoal Gray, or Dark Formal Suits with dress shoes.</li>
-            <li><strong>Fathers:</strong> Charcoal Gray suit with tie.</li>
-            <li><strong>Best Man:</strong> Dusty Blue suit.</li>
-            <li><strong>Groomsmen:</strong> Warm Beige / Champagne suit.</li>
+            <li><strong>Suit:</strong> Formal Black Suit with white button-down dress shirt.</li>
+            <li><strong>Tie:</strong> Necktie or bowtie in any shade of our blue color motif (Deep Navy to Powder Blue).</li>
+            <li><strong>Shoes:</strong> Formal black leather shoes.</li>
           </ul>
         </div>
   
         <!-- Ladies Box -->
         <div class="lookbook-box">
           <h4>👗 Ladies</h4>
-          <p><strong>Attire:</strong> Floor-Length Formal Gown</p>
+          <p>Formal Gown</p>
           <ul class="lookbook-list">
-            <li><strong>Guests:</strong> Elegant long gowns in Silk Dusty Rose, Dusty Blue, Navy, or Beige.</li>
-            <li><strong>Mothers:</strong> Navy Blue formal gown.</li>
-            <li><strong>Maid of Honor:</strong> Dusty Blue formal gown.</li>
-            <li><strong>Bridesmaids:</strong> Silk Dusty Rose formal gown.</li>
+            <li><strong>Dress:</strong> Elegant floor-length formal evening gown.</li>
+            <li><strong>Color:</strong> In any shade of our blue color motif (Navy, Slate, Dusty Blue, or Powder Blue).</li>
+            <li><strong>Shoes:</strong> Formal dress heels or dressy flats.</li>
           </ul>
         </div>
       </div>
