@@ -584,9 +584,10 @@
       padding: 10px 0;
     }
 
+    /* --- TIMELINE SEGMENTED BRIDGE CONNECTORS (OPTION 1) --- */
     .timeline-item {
       position: relative;
-      margin-bottom: 34px;
+      margin-bottom: 52px; /* Generous breathing room for the connector */
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -595,7 +596,34 @@
     }
 
     .timeline-item:last-child {
-      margin-bottom: 0;
+      margin-bottom: 0; /* No connector after the final milestone */
+    }
+
+    /* Vertical connector stem in the blank space */
+    .timeline-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      bottom: -38px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1.5px;
+      height: 24px;
+      background: linear-gradient(180deg, var(--pink-accent) 0%, rgba(221, 165, 165, 0.2) 100%);
+      border-radius: 2px;
+    }
+
+    /* Delicate rose pearl dot at the tip pointing to the next year */
+    .timeline-item:not(:last-child)::before {
+      content: '';
+      position: absolute;
+      bottom: -44px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--pink-accent);
+      box-shadow: 0 0 6px rgba(221, 165, 165, 0.5);
     }
 
     .timeline-year-pill {
