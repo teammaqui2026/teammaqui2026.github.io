@@ -395,25 +395,25 @@
       margin: 0 auto;
     }
 
-    /* --- ENHANCED LUMINOUS MONOGRAM --- */
+    /* --- GRAND HERO MONOGRAM & BALANCED TEXT --- */
     .hero-monogram-wrap {
-      margin: 0 auto 12px;
+      margin: 0 auto 16px;
       display: flex;
       justify-content: center;
       align-items: center;
     }
 
     .hero-monogram-img {
-      width: 155px; /* Larger, prominent size */
+      width: 240px;          /* Significantly larger so the text underneath is crisp & readable */
+      max-width: 85vw;       /* Ensures it fits nicely on any phone screen */
       height: auto;
       object-fit: contain;
-      /* Magically turns the dark blue into luminous crisp white with a shadow */
-      filter: brightness(0) invert(1) drop-shadow(0 3px 10px rgba(0, 0, 0, 0.85));
+      filter: brightness(0) invert(1) drop-shadow(0 4px 14px rgba(0, 0, 0, 0.95));
       transition: transform 0.3s ease;
     }
 
     .hero-monogram-img:hover {
-      transform: scale(1.06);
+      transform: scale(1.04);
     }
 
     .seal-letters {
@@ -437,13 +437,13 @@
     }
 
     .hero-sub {
-      font-size: 0.8rem;
-      letter-spacing: 0.35em;
+      font-size: 0.92rem;    /* Slightly larger & bolder */
+      letter-spacing: 0.32em;
       text-transform: uppercase;
       color: #F4DADA;
-      font-weight: 500;
+      font-weight: 600;
       margin-bottom: 12px;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
     }
 
     .hero-title {
@@ -467,13 +467,15 @@
       vertical-align: baseline;
     }
 
+    /* Date & Location */
     .hero-date {
-      font-size: 0.95rem;
-      color: rgba(255, 255, 255, 0.95);
+      font-size: 1.05rem;    /* Clear and prominent */
+      color: rgba(255, 255, 255, 0.98);
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.6);
-      font-weight: 400;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85);
+      font-weight: 500;
+      margin-top: 6px;
     }
 
     .scroll-down {
