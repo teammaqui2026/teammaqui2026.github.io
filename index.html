@@ -395,28 +395,24 @@
       margin: 0 auto;
     }
 
-    .monogram-seal {
-      width: 68px;
-      height: 68px;
+    /* --- LUXURY FLOATING MONOGRAM --- */
+    .hero-monogram-wrap {
       margin: 0 auto 16px;
-      border-radius: 50%;
-      border: 1px solid rgba(221, 165, 165, 0.75);
       display: flex;
-      align-items: center;
       justify-content: center;
-      background: rgba(15, 26, 44, 0.40);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
-      position: relative;
+      align-items: center;
     }
 
-    .monogram-seal::before {
-      content: '';
-      position: absolute;
-      inset: 4px;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      border-radius: 50%;
+    .hero-monogram-img {
+      width: 76px; /* Adjust size if needed (e.g. 70px to 90px) */
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.55));
+      transition: transform 0.3s ease;
+    }
+
+    .hero-monogram-img:hover {
+      transform: scale(1.05);
     }
 
     .seal-letters {
@@ -2397,8 +2393,13 @@
     <div class="hero-overlay"></div>
     <div class="hero-content">
       
-      <div class="monogram-seal">
-        <span class="seal-letters">L<span class="seal-amp">&</span>S</span>
+      <div class="hero-monogram-wrap">
+        <img 
+          src="https://i.imgur.com/ilSQ5Rh.png" 
+          alt="Lawrence & Sharmaine Monogram" 
+          class="hero-monogram-img"
+          id="heroMonogram"
+        >
       </div>
 
       <div class="hero-sub" id="heroSub">Together With Their Families</div>
@@ -3100,6 +3101,10 @@
           if (cfg.Map_Reception_URL) {
             const el = document.getElementById('receptionMapLink');
             if (el) el.href = cfg.Map_Reception_URL;
+          }
+          if (cfg.Monogram_URL) {
+            const monoImg = document.getElementById('heroMonogram');
+            if (monoImg) monoImg.src = formatDriveImage(cfg.Monogram_URL);
           }
 
           const sheetVideo = cfg.YouTube_Video_ID || cfg.Video_URL;
