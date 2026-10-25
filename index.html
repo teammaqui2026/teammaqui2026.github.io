@@ -398,20 +398,20 @@
       align-items: center;
     }
 
-    /* Grand Monogram */
+    /* Desktop Sizing */
     .hero-monogram-wrap {
-      margin: 0 auto 10px;
+      margin: 0 auto 12px;
       display: flex;
       justify-content: center;
       align-items: center;
     }
 
     .hero-monogram-img {
-      width: 220px;
-      max-width: 80vw;
+      width: 105px;          /* Elegant, balanced crest size */
+      max-height: 100px;
       height: auto;
       object-fit: contain;
-      filter: brightness(0) invert(1) drop-shadow(0 4px 14px rgba(0, 0, 0, 0.95));
+      filter: brightness(0) invert(1) drop-shadow(0 3px 10px rgba(0, 0, 0, 0.85));
       transition: transform 0.3s ease;
     }
 
@@ -2362,6 +2362,13 @@
       }
       .lightbox-nav-arrow.prev { left: 8px; }
       .lightbox-nav-arrow.next { right: 8px; }
+    }
+
+    @media (max-width: 600px) {
+      .hero-monogram-img {
+        width: 85px;         /* Perfect delicate scale on phones */
+        max-height: 85px;
+      }
     }
   </style>
 </head>
