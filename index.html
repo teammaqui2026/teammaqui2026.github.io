@@ -395,24 +395,25 @@
       margin: 0 auto;
     }
 
-    /* --- LUXURY FLOATING MONOGRAM --- */
+    /* --- ENHANCED LUMINOUS MONOGRAM --- */
     .hero-monogram-wrap {
-      margin: 0 auto 16px;
+      margin: 0 auto 12px;
       display: flex;
       justify-content: center;
       align-items: center;
     }
 
     .hero-monogram-img {
-      width: 76px; /* Adjust size if needed (e.g. 70px to 90px) */
+      width: 155px; /* Larger, prominent size */
       height: auto;
       object-fit: contain;
-      filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.55));
+      /* Magically turns the dark blue into luminous crisp white with a shadow */
+      filter: brightness(0) invert(1) drop-shadow(0 3px 10px rgba(0, 0, 0, 0.85));
       transition: transform 0.3s ease;
     }
 
     .hero-monogram-img:hover {
-      transform: scale(1.05);
+      transform: scale(1.06);
     }
 
     .seal-letters {
