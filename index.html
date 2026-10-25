@@ -237,12 +237,14 @@
       border-radius: 50%;
     }
 
-    .env-seal-text {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.3rem;
-      color: #FFFFFF;
-      font-weight: 500;
-      letter-spacing: 0.12em;
+    /* Custom Monogram Wax Stamp */
+    .env-seal-img {
+      width: 34px;
+      height: 34px;
+      object-fit: contain;
+      /* Turns dark blue into crisp stamped white with a soft debossed shadow */
+      filter: brightness(0) invert(1) drop-shadow(0 1px 3px rgba(0, 0, 0, 0.4));
+      pointer-events: none;
     }
 
     .env-hint-text {
@@ -2394,8 +2396,14 @@
 
       <div class="env-flap-top" id="envFlapTop"></div>
 
+      <!-- Wax Seal with Custom Monogram -->
       <div class="env-center-seal" id="envSeal">
-        <span class="env-seal-text">L&S</span>
+        <img 
+          src="https://i.imgur.com/ReK1iS3.png" 
+          alt="L&S Seal" 
+          class="env-seal-img" 
+          id="envSealImg"
+        >
       </div>
     </div>
 
@@ -3148,8 +3156,11 @@
             if (el) el.href = cfg.Map_Reception_URL;
           }
           if (cfg.Monogram_URL) {
-            const monoImg = document.getElementById('heroMonogram');
-            if (monoImg) monoImg.src = formatDriveImage(cfg.Monogram_URL);
+            const formattedMono = formatDriveImage(cfg.Monogram_URL);
+            const heroMono = document.getElementById('heroMonogram');
+            const sealMono = document.getElementById('envSealImg');
+            if (heroMono) heroMono.src = formattedMono;
+            if (sealMono) sealMono.src = formattedMono;
           }
 
           const sheetVideo = cfg.YouTube_Video_ID || cfg.Video_URL;
