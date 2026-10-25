@@ -1422,23 +1422,22 @@
     }
 
     .footer-monogram {
-      width: 54px;
-      height: 54px;
-      margin: 0 auto 16px;
+      width: 68px;          /* Increased from 54px */
+      height: 68px;         /* Increased from 54px */
+      margin: 0 auto 18px;
       border-radius: 50%;
-      border: 1px solid rgba(221, 165, 165, 0.6);
+      border: 1.5px solid rgba(221, 165, 165, 0.65);
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(255, 255, 255, 0.85);
-      box-shadow: 0 4px 14px rgba(26, 43, 73, 0.06);
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 6px 18px rgba(26, 43, 73, 0.08);
     }
 
     .footer-monogram-img {
-      width: 32px;
-      height: 32px;
+      width: 44px;          /* Increased from 32px */
+      height: 44px;         /* Increased from 32px */
       object-fit: contain;
-      /* Displays in its elegant natural navy color against the light beige card */
     }
 
     .footer-quote {
@@ -2528,7 +2527,7 @@
       </div>
     
       <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 16px;">
-        An intimate glimpse into our forever
+        A little glimpse of our story
       </p>
     
       <div class="cinema-frame-wrapper">
@@ -2624,7 +2623,7 @@
           <span class="time-badge" id="receptionTime">4:00 PM</span>
           <h3>Reception</h3>
           <p class="event-venue" id="receptionVenue">Blue Gardens Wedding and Events Venue</p>
-          <p class="event-address" id="receptionNote">Cocktails, dinner & dancing to follow</p>
+          <p class="event-address" id="receptionNote">Cocktails, dinner & celebration</p>
           
           <div class="map-btn-group">
             <a href="https://maps.google.com/?q=Blue+Gardens+Wedding+and+Events+Venue+Quezon+City" id="receptionMapLink" target="_blank" rel="noopener noreferrer" class="btn-nav-link">
@@ -2706,50 +2705,6 @@
         But if you desire to give nonetheless,<br>
         a monetary gift to help us build our home is one we suggest."
       </p>
-    
-      <div class="gift-grid">
-        <!-- GCash Card -->
-        <div class="gift-account-card">
-          <p class="gift-bank-name" id="gcashTitle">GCash</p>
-          <p class="gift-account-name" id="gcashName">Lawrence Justine Maqui</p>
-          
-          <div class="gift-qr-wrapper">
-            <img src="https://lh3.googleusercontent.com/d/16IhtvNxGNYKFGLQpAPIj7-exVBNDh5iQ=w1000" id="gcashQrImg" alt="GCash QR Code" class="gift-qr-img">
-          </div>
-    
-          <span class="gift-account-number" id="gcashAcc">0976 108 8123</span>
-    
-          <div class="gift-btn-group">
-            <button type="button" class="btn-gift-action" onclick="copyAccountNumber('gcashAcc', this)">
-              <span>📋 Copy Number</span>
-            </button>
-            <button type="button" class="btn-gift-action" onclick="downloadQrImage('gcashQrImg', 'GCash-Lawrence-Maqui.png', this)">
-              <span>⬇ Save QR</span>
-            </button>
-          </div>
-        </div>
-    
-        <!-- Gotyme Bank Card -->
-        <div class="gift-account-card">
-          <p class="gift-bank-name" id="bankTitle">Gotyme Bank</p>
-          <p class="gift-account-name" id="bankName">Lawrence Justine Maqui</p>
-          
-          <div class="gift-qr-wrapper">
-            <img src="https://lh3.googleusercontent.com/d/1dInJLsOFFVUZL2nu7wvnQHDQHibF3ctK=w1000" id="bankQrImg" alt="Gotyme Bank QR Code" class="gift-qr-img">
-          </div>
-    
-          <span class="gift-account-number" id="bankAcc">0150 0014 5750</span>
-    
-          <div class="gift-btn-group">
-            <button type="button" class="btn-gift-action" onclick="copyAccountNumber('bankAcc', this)">
-              <span>📋 Copy Number</span>
-            </button>
-            <button type="button" class="btn-gift-action" onclick="downloadQrImage('bankQrImg', 'Gotyme-Lawrence-Maqui.png', this)">
-              <span>⬇ Save QR</span>
-            </button>
-          </div>
-        </div>
-      </div>
     </section>
 
     <!-- 6. WEDDING REMINDERS & FAQ CARD -->
@@ -3814,7 +3769,7 @@
           <h4>👔 Gentlemen</h4>
           <p>Black Suit &amp; Tie</p>
           <ul class="lookbook-list">
-            <li><strong>Suit:</strong> Formal Black Suit with white button-down dress shirt.</li>
+            <li><strong>Suit:</strong> Formal Black Suit with white button-down shirt.</li>
             <li><strong>Tie:</strong> Necktie or bowtie in any shade of our blue color motif (Deep Navy to Powder Blue).</li>
             <li><strong>Shoes:</strong> Formal black leather shoes.</li>
           </ul>
@@ -3825,7 +3780,7 @@
           <h4>👗 Ladies</h4>
           <p>Formal Gown</p>
           <ul class="lookbook-list">
-            <li><strong>Dress:</strong> Elegant floor-length formal evening gown.</li>
+            <li><strong>Dress:</strong> Elegant floor-length formal gown.</li>
             <li><strong>Color:</strong> In any shade of our blue color motif (Navy, Slate, Dusty Blue, or Powder Blue).</li>
             <li><strong>Shoes:</strong> Formal dress heels or dressy flats.</li>
           </ul>
