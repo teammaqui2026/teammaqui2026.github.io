@@ -1422,23 +1422,23 @@
     }
 
     .footer-monogram {
-      width: 50px;
-      height: 50px;
-      margin: 0 auto 14px;
+      width: 54px;
+      height: 54px;
+      margin: 0 auto 16px;
       border-radius: 50%;
       border: 1px solid rgba(221, 165, 165, 0.6);
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(255, 255, 255, 0.6);
-      box-shadow: 0 4px 14px rgba(26, 43, 73, 0.05);
+      background: rgba(255, 255, 255, 0.85);
+      box-shadow: 0 4px 14px rgba(26, 43, 73, 0.06);
     }
 
-    .footer-monogram span {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.15rem;
-      color: var(--navy);
-      letter-spacing: 0.12em;
+    .footer-monogram-img {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+      /* Displays in its elegant natural navy color against the light beige card */
     }
 
     .footer-quote {
@@ -2935,7 +2935,12 @@
     <!-- FOOTER -->
     <footer>
       <div class="footer-monogram">
-        <span>L❦S</span>
+        <img 
+          src="PASTE_YOUR_MONOGRAM_URL_HERE" 
+          alt="Lawrence & Sharmaine" 
+          class="footer-monogram-img" 
+          id="footerMonogram"
+        >
       </div>
       <p class="footer-quote">We cannot wait to celebrate our forever with you.</p>
       <h3 class="footer-names">Lawrence &amp; Sharmaine</h3>
@@ -3159,8 +3164,11 @@
             const formattedMono = formatDriveImage(cfg.Monogram_URL);
             const heroMono = document.getElementById('heroMonogram');
             const sealMono = document.getElementById('envSealImg');
+            const footMono = document.getElementById('footerMonogram');
+
             if (heroMono) heroMono.src = formattedMono;
             if (sealMono) sealMono.src = formattedMono;
+            if (footMono) footMono.src = formattedMono;
           }
 
           const sheetVideo = cfg.YouTube_Video_ID || cfg.Video_URL;
