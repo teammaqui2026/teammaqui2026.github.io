@@ -2852,23 +2852,14 @@
           </div>
         </div>
 
-        <div class="form-group" id="seatsGroup">
-          <label>Total Number of Seats Reserved</label>
-          <select id="seatCountSelect">
-            <option value="1">1 Seat (Just Me)</option>
-            <option value="2">2 Seats (Me + 1 Companion)</option>
-            <option value="3">3 Seats (Me + 2 Companions)</option>
-          </select>
-        </div>
-
         <div class="form-group" id="companionFieldsGroup" style="display: none;">
           <label id="companionLabel">Companion's Full Name</label>
           <div id="companionInputsContainer"></div>
         </div>
 
         <div class="form-group">
-          <label>Message for the Couple / Song Request</label>
-          <textarea id="message" rows="3" placeholder="Leave a wish or a song that gets you on the dance floor..."></textarea>
+          <label>Message for the Couple</label>
+          <textarea id="message" rows="3" placeholder="Leave a message for the couple..."></textarea>
         </div>
 
         <button type="submit" class="btn-submit" id="submitBtn">
@@ -3288,14 +3279,6 @@
       document.querySelectorAll('.attend-card').forEach(card => card.classList.remove('active'));
       el.classList.add('active');
       selectedAttendance = val;
-
-      if (val === 'Regretfully Declines') {
-        if (seatsGroup) seatsGroup.style.display = 'none';
-        if (companionGroup) companionGroup.style.display = 'none';
-      } else {
-        if (seatsGroup) seatsGroup.style.display = 'block';
-        updateCompanionInputs();
-      }
     }
 
     function updateCompanionInputs() {
@@ -3438,8 +3421,8 @@
         const data = {
           name: document.getElementById("guestName").value,
           attendance: selectedAttendance,
-          guests: selectedAttendance === 'Joyfully Accepts' ? seatSelect.value : 0,
-          companions: selectedAttendance === 'Joyfully Accepts' ? companionsString : 'None',
+          guests: selectedAttendance === 'Joyfully Accepts' ? 1 : 0,
+          companions: 'None',
           message: document.getElementById("message").value
         };
 
